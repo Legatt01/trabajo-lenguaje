@@ -1,6 +1,13 @@
 header{
   background-color: #171716;
 }
+.contenedor_logo{
+  text-align: center;
+}
 .logo{
-  width: 100%;
+  width: 624px;
+  max-width: 100%;
+}
+nav{
+  
 }
