@@ -1,13 +1,133 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/css/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/js/main.js"></script>
-  </body>
+<!-- Página de contacto de Ichiban Motors -->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Hace la página responsive en dispositivos móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Descripción específica de esta página para SEO -->
+  <meta name="description"
+    content="Contacta con Ichiban Motors. Estamos aquí para resolver tus dudas y ayudarte a encontrar la moto perfecta." />
+  <link rel="stylesheet" href="src/style.css" />
+  <title>Contacto | Ichiban</title>
+</head>
+
+<body>
+  <!-- Cabecera compartida con todas las páginas -->
+  <header>
+    <div class="exterior_logo">
+      <div class="contenedor_logo">
+        <a href="/" title="Ir a la página de inicio">
+          <img class="logo" src="src/assets/img/ichiban.png" alt="Ichiban-logo" />
+        </a>
+        <p class="slogan">YOUR WAY TO FREEDOM</p>
+      </div>
+    </div>
+    <!-- Navegación principal - se vuelve sticky al hacer scroll -->
+    <nav class="contenedor_nav">
+      <!-- Botón hamburguesa - visible solo en móvil -->
+      <button class="hamburguesa" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a href="/">INICIO</a></li>
+        <li><a href="/category.html">CATEGORÍAS</a></li>
+        <li><a href="/contact.html">CONTACTO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Banner 1: Hero de contacto -->
+    <section class="hero-contacto">
+      <h1>Contacta con nosotros</h1>
+      <p>Estamos aquí para ayudarte. Rellena el formulario o contáctanos directamente.</p>
+    </section>
+
+    <!-- Banner 2: Formulario de contacto con vídeo de fondo -->
+    <section class="contacto-form">
+      <!-- Vídeo de fondo decorativo -->
+      <video autoplay muted loop playsinline class="background-video">
+        <source src="src/assets/video/fondo_2.mp4" type="video/mp4" />
+        Tu navegador no soporta el elemento de video.
+      </video>
+      <h2>Envíanos un mensaje</h2>
+      <!-- Formulario de contacto - validado por JS -->
+      <form action="/submit-contact" method="POST" class="datos-contacto">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="asunto">Asunto:</label>
+        <input type="text" id="asunto" name="asunto" required />
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </section>
+
+    <!-- Banner 3: Mapa de ubicación -->
+    <section class="ubicacion">
+      <h2>Dónde encontrarnos</h2>
+      <div class="mapa">
+        <!-- Embed de Google Maps apuntando a Tokio, Japón -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.827853357302!2d139.6917!3d35.6895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQxJzIyLjIiTiAxMznCsDQxJzMwLjEiRQ!5e0!3m2!1ses!2ses!4v1234567890"
+          width="100%"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación de Ichiban Motors en Tokio">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página compartido con todas las páginas -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><span>📍</span><p>Calle Libertad 24, Tokio, Japón</p></li>
+          <li><span>📞</span><p>+81 90 1234 5678</p></li>
+          <li><span>✉️</span><a href="mailto:info@ichibanmotors.com">info@ichibanmotors.com</a></li>
+          <li><span>🕐</span><p>Lun–Vie: 9:00 – 18:00</p></li>
+        </ul>
+      </div>
+      <!-- Enlaces a redes sociales -->
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <ul class="redes">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Barra inferior con copyright y enlaces legales -->
+    <div class="footer-bottom">
+      <p>© 2026 Ichiban Motors. Todos los derechos reservados.</p>
+      <div class="footer-legal">
+        <a href="/aviso-legal.html">Aviso legal</a>
+        <a href="/privacidad.html">Privacidad</a>
+        <a href="/cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script principal compartido con todas las páginas -->
+  <script type="module" src="src/js/main.js"></script>
+</body>
+
 </html>

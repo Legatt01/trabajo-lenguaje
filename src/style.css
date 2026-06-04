@@ -1,13 +1,802 @@
-header{
-  background-color: #171716;
+/* ============================================
+   IMPORTACIÓN DE FUENTES
+   Quicksand (Google Fonts), Bebas Neue y Black Ops One
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Bebas+Neue&family=Black+Ops+One&display=swap');
+
+/* ============================================
+   RESET GLOBAL
+   Elimina márgenes y paddings por defecto
+   y establece box-sizing consistente
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.contenedor_logo{
+
+/* ============================================
+   FUENTE PERSONALIZADA
+   Sugo Pro Display - alojada localmente
+   ============================================ */
+@font-face {
+  font-family: 'Sugo Pro Display';
+  src: url('assets/fonts/Sugo-Pro-Classic-Regular-trial.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  /* Muestra fuente de reserva mientras carga */
+  font-display: swap;
+}
+
+/* ============================================
+   VARIABLES GLOBALES
+   Colores, fuentes y espaciados reutilizables
+   ============================================ */
+:root {
+  /* Paleta de colores del tema oscuro */
+  --color-fondo: #171716;
+  --color-texto: #e4e2dd;
+  --color-hover: #333;
+  --color-hover-texto: #8b778b;
+
+  /* Fuentes */
+  --fuente-principal: 'Sugo Pro Display', sans-serif;
+  --fuente-secundaria: 'Quicksand', sans-serif;
+
+  /* Padding base del main - usado en cálculos de márgenes negativos */
+  --padding-main: 20px;
+}
+
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+
+/* Scroll suave al navegar por anclas */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+  font-family: var(--fuente-secundaria);
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
+header {
+  background-color: var(--color-fondo);
+}
+
+/* Padding compartido entre logo y nav */
+.exterior_logo,
+.contenedor_nav {
+  padding: 5px 80px;
+}
+
+/* Logo centrado con borde inferior separador */
+.contenedor_logo {
   text-align: center;
+  align-items: center;
+  border-bottom: 3px solid var(--color-texto);
 }
-.logo{
-  width: 624px;
-  max-width: 100%;
+
+.slogan {
+  font-family: var(--fuente-principal);
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  color: var(--color-texto);
+  padding-bottom: 10px;
 }
-nav{
-  
+
+.logo {
+  width: clamp(90px, 12vw, 150px);
+  height: auto;
+}
+
+/* Nav con flex para alinear elementos a la derecha */
+.contenedor_nav {
+  z-index: 1000;
+  transition: padding 0.6s ease;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Estado al hacer scroll - añadido por JS */
+.contenedor_nav.scrolled {
+  padding: 10px 0px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado sticky - activado por JS con IntersectionObserver */
+.contenedor_nav.sticky-active {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-fondo);
+  animation: slideDown 0.6s ease forwards;
+}
+
+/* Animación de entrada del nav sticky */
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+/* ============================================
+   MENÚ HAMBURGUESA
+   Visible solo en móvil via media query
+   ============================================ */
+
+.hamburguesa {
+  display: none; /* Oculto en escritorio */
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Las tres líneas del icono hamburguesa */
+.hamburguesa span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-texto);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Transformación a X cuando el menú está abierto - clase añadida por JS */
+.hamburguesa.abierto span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburguesa.abierto span:nth-child(2) {
+  opacity: 0;
+}
+.hamburguesa.abierto span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Links de navegación */
+.contenedor_nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contenedor_nav a {
+  font-family: var(--fuente-principal);
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.contenedor_nav li a:hover {
+  background-color: var(--color-hover);
+  border-radius: 4px;
+  color: var(--color-hover-texto);
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+
+main {
+  padding: 20px 20px 0 20px;
+}
+
+/* Tipografía global de títulos */
+h1 {
+  font-family: var(--fuente-principal);
+  font-size: clamp(2rem, 4vw, 3rem);
+  padding: 20px 0;
+}
+
+h2 {
+  font-family: var(--fuente-principal);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 20px 0;
+}
+
+p {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* ============================================
+   GRID DE MOTOS - INDEX
+   auto-fit hace el grid responsive automáticamente
+   ============================================ */
+
+.exposicion_motos {
+  margin-bottom: 20px;
+}
+
+.grid_motos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Tarjeta de moto */
+article {
+  background-color: var(--color-fondo);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+/* Efecto hover de elevación */
+article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagen de la moto */
+.motos {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Zoom suave al pasar el ratón */
+.motos:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+article p,
+article h3 {
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+  padding: 10px;
+}
+
+article h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+}
+
+/* flex-grow empuja el botón al fondo de la tarjeta */
+article p {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* Botón de acción de las tarjetas */
+.etiqueta {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+  font-weight: 600;
+  border-radius: 6px;
+  font-family: var(--fuente-secundaria);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-top: auto; /* Se pega al fondo de la tarjeta */
+}
+
+.etiqueta:hover {
+  background-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(228, 226, 221, 0.2);
+}
+
+/* Botón "Ver todas" del index */
+.ver-todas {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ver-todas a {
+  font-family: var(--fuente-secundaria);
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--color-fondo);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 500;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+  border: solid 2px var(--color-fondo);
+  border-radius: 8px;
+}
+
+.ver-todas a:hover {
+  background-color: var(--color-hover);
+  color: var(--color-hover-texto);
+  border-color: var(--color-hover);
+}
+
+/* ============================================
+   CUENTA ATRÁS - INDEX
+   Usa fuentes temáticas Bebas Neue y Black Ops One
+   ============================================ */
+
+.cuenta-atras {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  /* Margen negativo para ignorar el padding del main */
+  margin-inline: calc(-1 * var(--padding-main));
+}
+
+.cuenta-atras-label {
+  font-family: 'Black Ops One', sans-serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  letter-spacing: 4px;
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+
+.cuenta-atras h2 {
+  color: var(--color-texto);
+  font-family: 'Black Ops One', sans-serif;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+/* Números del contador - actualizados cada segundo por JS */
+.timer-item span {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--color-hover-texto);
+  display: block;
+}
+
+.timer-item p {
+  font-family: 'Black Ops One', sans-serif;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
+
+/* Sección de notificación por email */
+.notification-cuenta-atras {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.notification-cuenta-atras p {
+  width: 100%;
+  font-family: 'Black Ops One', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.notification-cuenta-atras input {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--color-hover-texto);
+  background-color: transparent;
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  font-size: 1rem;
+  width: 280px;
+}
+
+.notification-cuenta-atras input::placeholder {
+  opacity: 0.5;
+}
+
+/* Accesibilidad - indicador de foco para teclado */
+.notification-cuenta-atras input:focus-visible {
+  outline: 2px solid var(--color-hover-texto);
+  outline-offset: 3px;
+}
+
+.notification-cuenta-atras button {
+  padding: 10px 24px;
+  background-color: var(--color-hover-texto);
+  color: var(--color-texto);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.notification-cuenta-atras button:hover {
+  opacity: 0.8;
+}
+
+/* Mensaje de validación - se hace visible via JS añadiendo clase .visible */
+.notify-msg {
+  margin-top: 15px;
+  font-family: var(--fuente-principal);
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notify-msg.visible {
+  opacity: 1;
+}
+
+/* ============================================
+   FORMULARIO DE RESERVA - INDEX
+   Vídeo de fondo con z-index para capas
+   ============================================ */
+
+.reservation-section {
+  position: relative; /* Necesario para posicionar el vídeo */
+  padding-bottom: 20px;
+}
+
+/* Vídeo decorativo de fondo */
+.background-video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0; /* Detrás del contenido */
+  opacity: 0.5;
+  /* Margen negativo para cubrir el padding del main */
+  margin-inline: calc(-1 * var(--padding-main));
+  width: calc(100% + 2 * var(--padding-main));
+}
+
+/* El contenido del formulario por encima del vídeo */
+.reservation-section h2,
+.reservation-section p,
+.reservation-section form {
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos globales de formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--fuente-principal);
+  color: var(--color-texto);
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--fuente-secundaria);
+  font-size: 1rem;
+}
+
+form button {
+  background-color: var(--color-texto);
+  color: var(--color-fondo);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+form button:hover {
+  background-color: var(--color-hover);
+  color: var(--color-hover-texto);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 60px 80px 20px 80px;
+  margin-top: 0;
+  border-top: 3px solid var(--color-hover-texto);
+}
+
+/* Grid de dos columnas para las secciones del footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-hover);
+}
+
+.footer-col h3 {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-texto);
+  margin-bottom: 20px;
+  padding: 0;
+  letter-spacing: 2px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-col ul li p,
+.footer-col ul li a {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: var(--color-texto);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  opacity: 1;
+  color: var(--color-hover-texto);
+}
+
+/* Flecha decorativa antes de cada enlace de redes sociales */
+.footer-col .redes li a {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  letter-spacing: 1px;
+}
+
+.redes li a::before {
+  content: '→ ';
+  color: var(--color-hover-texto);
+}
+
+/* Barra inferior del footer */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom p {
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  opacity: 0.5;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-legal a {
+  font-family: var(--fuente-principal);
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: var(--color-texto);
+  text-decoration: none;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.footer-legal a:hover {
+  opacity: 1;
+  color: var(--color-hover-texto);
+}
+
+/* ============================================
+   RESPONSIVE - COMPARTIDO
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  /* Footer pasa a una columna */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reducir padding lateral en tablet */
+  .exterior_logo,
+  .contenedor_nav,
+  footer {
+    padding-inline: 20px;
+  }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+  /* Footer bottom apilado verticalmente */
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Nav en columna para el menú hamburguesa */
+  .contenedor_nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .hamburguesa {
+    display: flex;
+    padding: 10px 20px;
+  }
+
+  /* Menú oculto con animación de altura y opacidad */
+  .contenedor_nav ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* Menú visible - clase añadida por JS al pulsar hamburguesa */
+  .contenedor_nav ul.visible {
+    display: flex;
+    max-height: 300px;
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   PÁGINA DE CATEGORÍAS
+   ============================================ */
+
+.catalogo {
+  padding-bottom: 20px;
+}
+
+/* Contenedor de botones de filtro */
+.grid_filtros {
+  background-color: var(--color-fondo);
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.678);
+}
+
+/* Botones de filtro */
+.filtro {
+  padding: 10px 20px;
+  background-color: var(--color-hover-texto);
+  color: var(--color-texto);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--fuente-principal);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.filtro:hover {
+  background-color: var(--color-hover);
+  color: var(--color-hover-texto);
+}
+
+/* Botón activo - clase añadida por JS al seleccionar categoría */
+.filtro.activo {
+  background-color: var(--color-hover-texto);
+  color: var(--color-fondo);
+  opacity: 0.8;
+}
+
+/* Grid fijo de 3 columnas para el catálogo completo */
+.grid_catalogo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Banner de descuento exclusivo */
+.descuento {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 40px 20px;
+  text-align: center;
+  margin: 40px 0px;
+  border-radius: 8px;
+}
+
+.descuento a {
+  margin-top: 20px;
+}
+
+/* Responsive catálogo */
+@media (max-width: 768px) {
+  .grid_catalogo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid_catalogo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   PÁGINA DE CONTACTO
+   ============================================ */
+
+.hero-contacto {
+  padding-bottom: 20px;
+}
+
+/* Sección del formulario con vídeo de fondo */
+.contacto-form {
+  position: relative; /* Necesario para posicionar el vídeo */
+  padding-bottom: 20px;
+}
+
+/* El formulario y el título por encima del vídeo */
+.contacto-form h2,
+.contacto-form form {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sección del mapa de ubicación */
+.ubicacion {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  padding: 0px 20px 40px;
+  text-align: center;
+  /* Margen negativo para ignorar el padding del main */
+  margin-inline: calc(-1 * var(--padding-main));
 }

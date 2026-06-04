@@ -1,31 +1,237 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio</title>
-  </head>
-  <body>
-    <header>
-      <div>
-        <div class="contenedor_logo">
-          <img
-            class="logo"
-            src="src/assets/img/ichiban.png"
-            alt="Ichiban-logo"
-          />
+<!-- Página principal de Ichiban Motors -->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Hace la página responsive en dispositivos móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Descripción para motores de búsqueda (SEO) -->
+  <meta name="description"
+    content="Ichiban — descubre nuestra selección de motos de alta calidad. Reserva la tuya hoy." />
+  <link rel="stylesheet" href="src/style.css" />
+  <title>Inicio | Ichiban</title>
+</head>
+
+<body>
+  <!-- Cabecera con logo y navegación principal -->
+  <header>
+    <div class="exterior_logo">
+      <div class="contenedor_logo">
+        <!-- Logo con enlace a inicio -->
+        <a href="/" title="Ir a la página de inicio">
+          <img class="logo" src="src/assets/img/ichiban.png" alt="Ichiban-logo" />
+        </a>
+        <p class="slogan">YOUR WAY TO FREEDOM</p>
+      </div>
+    </div>
+    <!-- Navegación principal - se vuelve sticky al hacer scroll -->
+    <nav class="contenedor_nav">
+      <!-- Botón hamburguesa - visible solo en móvil -->
+      <button class="hamburguesa" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a href="/">INICIO</a></li>
+        <li><a href="/category.html">CATEGORÍAS</a></li>
+        <li><a href="/contact.html">CONTACTO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Banner 1: Hero de bienvenida -->
+    <div class="contenedor_main">
+      <h1>Bienvenido a Ichiban</h1>
+      <p>Descubre nuestra selección de motos</p>
+    </div>
+
+    <!-- Banner 2: Exposición de motos destacadas -->
+    <section class="exposicion_motos">
+      <h2>Nuestras estrellas</h2>
+      <p>Dale un vistazo al futuro del motor:</p>
+      <div class="grid_motos">
+        <!-- Tarjeta de moto 1 -->
+        <article>
+          <a href="/moto1.html" title="Ver detalles de Moto Aventura">
+            <img class="motos" src="src/assets/img/moto1.jpg" alt="Dākuhōsu ダークホース - moto de estilo brutalista" />
+          </a>
+          <h3>Dākuhōsu ダークホース</h3>
+          <p>Ingeniería brutalista reducida a su máxima expresión. No sigue tendencias; las destruye. Diseñada para
+            quienes entienden que el futuro no se espera, se domina.</p>
+          <a class="etiqueta" href="/moto1.html" title="Ver detalles de Moto Aventura">
+            Ver detalles
+          </a>
+        </article>
+
+        <!-- Tarjeta de moto 2 -->
+        <article>
+          <a href="/moto2.html" title="Ver detalles de Moto de Deportiva">
+            <img class="motos" src="src/assets/img/moto2.jpg" alt="Bull ブル - moto de estilo deportivo" />
+          </a>
+          <h3>Bull ブル</h3>
+          <p>La aerodinámica del mañana, esculpida en el presente. Una silueta monolítica diseñada para fundirse con el
+            asfalto a velocidades que desafían la física. El futuro es fluido.</p>
+          <a class="etiqueta" href="/moto2.html" title="Ver detalles de Moto de Deportiva">
+            Ver detalles
+          </a>
+        </article>
+
+        <!-- Tarjeta de moto 3 -->
+        <article>
+          <a href="/moto3.html" title="Ver detalles de Moto Urbana">
+            <img class="motos" src="src/assets/img/moto3.jpg" alt="Ishi 意思 - moto de estilo urbano" />
+          </a>
+          <h3>Ishi 意思</h3>
+          <p>Un ícono de culto reimaginado para la era eléctrica. Minimalismo absoluto en el exterior; sofisticación
+            técnica en el interior. Arte en movimiento para los que exigen identidad.</p>
+          <a class="etiqueta" href="/moto3.html" title="Ver detalles de Moto Urbana">
+            Ver detalles
+          </a>
+        </article>
+      </div>
+      <!-- Enlace a la página de categorías -->
+      <div class="ver-todas">
+        <a href="/category.html" title="Ver todas la motos">
+          Ver todas
+        </a>
+      </div>
+    </section>
+
+    <!-- Banner 3: Cuenta atrás para nuevo lanzamiento -->
+    <section class="cuenta-atras">
+      <p class="cuenta-atras-label">ALGO SE APROXIMA</p>
+      <h2>Gōjira ゴジラ</h2>
+      <!-- Contador actualizado cada segundo por JS -->
+      <div class="timer">
+        <div class="timer-item">
+          <span id="dias">00</span>
+          <p>DÍAS</p>
+        </div>
+        <div class="timer-item">
+          <span id="horas">00</span>
+          <p>HRS</p>
+        </div>
+        <div class="timer-item">
+          <span id="minutos">00</span>
+          <p>MIN</p>
+        </div>
+        <div class="timer-item">
+          <span id="segundos">00</span>
+          <p>SEG</p>
         </div>
       </div>
-      <nav>
+      <!-- Formulario de notificación por email -->
+      <div class="notification-cuenta-atras">
+        <p>¡Prepárate para la llegada del Rey de los Monstruos!</p>
+        <input type="email" id="notify-email" placeholder="Tu correo electrónico" />
+        <button id="notify-btn">Notifícame</button>
+      </div>
+      <!-- Mensaje de validación del email, visible via JS -->
+      <p id="notify-msg" class="notify-msg"></p>
+    </section>
+
+    <!-- Banner 4: Formulario de reserva con vídeo de fondo -->
+    <section class="reservation-section">
+      <!-- Vídeo de fondo decorativo -->
+      <video autoplay muted loop playsinline class="background-video">
+        <source src="src/assets/video/video_background.mp4" type="video/mp4" />
+        Tu navegador no soporta el elemento de video.
+      </video>
+      <h2>Reserva tu moto</h2>
+      <p>Rellena este formulario y nos pondremos en contacto contigo.</p>
+      <!-- Formulario de reserva - validado por JS -->
+      <form action="/submit-reservation" method="POST" class="reservation-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="apellido">Apellidos:</label>
+        <input type="text" id="apellido" name="apellido" required />
+
+        <label for="tel">Teléfono:</label>
+        <input type="tel" id="tel" name="tel" required />
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required />
+
+        <!-- Campo opcional para código de descuento -->
+        <label for="descuento">¿Tienes un código de descuento?</label>
+        <input type="text" id="descuento" name="descuento" placeholder="Introduce tu código" />
+
+        <label for="region">Selecciona tu región:</label>
+        <select id="region" name="region" required>
+          <option value="">--Selecciona tu región--</option>
+          <option value="japon">Japón</option>
+          <option value="usa">Estados Unidos</option>
+          <option value="europa">Europa</option>
+        </select>
+
+        <label for="moto">Selecciona tu moto:</label>
+        <select id="moto" name="moto" required>
+          <option value="">--Selecciona una moto--</option>
+          <option value="dakuhoosu">Dākuhōsu ダークホース</option>
+          <option value="bull">Bull ブル</option>
+          <option value="ishi">Ishi 意思</option>
+        </select>
+
+        <button type="submit">Reservar</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Pie de página con información de contacto y redes sociales -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Contacto</h3>
         <ul>
-          <li><a href="/">Inicio</a></li>
-          <li><a href="/contact.html">Contacto</a></li>
-          <li><a href="/category.html">Categorías</a></li>
+          <li>
+            <span>📍</span>
+            <p>Calle Libertad 24, Tokio, Japón</p>
+          </li>
+          <li>
+            <span>📞</span>
+            <p>+81 90 1234 5678</p>
+          </li>
+          <li>
+            <span>✉️</span>
+            <a href="mailto:info@ichibanmotors.com">info@ichibanmotors.com</a>
+          </li>
+          <li>
+            <span>🕐</span>
+            <p>Lun–Vie: 9:00 – 18:00</p>
+          </li>
         </ul>
-      </nav>
-    </header>
-    <div id="app"></div>
-    <script type="module" src="/src/js/main.js"></script>
-  </body>
+      </div>
+
+      <!-- Enlaces a redes sociales -->
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <ul class="redes">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Barra inferior con copyright y enlaces legales -->
+    <div class="footer-bottom">
+      <p>© 2026 Ichiban Motors. Todos los derechos reservados.</p>
+      <div class="footer-legal">
+        <a href="/aviso-legal.html">Aviso legal</a>
+        <a href="/privacidad.html">Privacidad</a>
+        <a href="/cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script principal - carga como módulo ES6 -->
+  <script type="module" src="src/js/main.js"></script>
+
+</body>
+
 </html>

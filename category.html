@@ -1,13 +1,214 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categoria</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<!-- Página de catálogo de motos de Ichiban Motors -->
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Hace la página responsive en dispositivos móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Descripción específica de esta página para SEO -->
+  <meta name="description"
+    content="Explora el catálogo completo de motos Ichiban. Filtra por urbana, deportiva o enduro." />
+  <link rel="stylesheet" href="src/style.css" />
+  <title>Categorías | Ichiban</title>
+</head>
+
+<body>
+  <!-- Cabecera compartida con todas las páginas -->
+  <header>
+    <div class="exterior_logo">
+      <div class="contenedor_logo">
+        <a href="/" title="Ir a la página de inicio">
+          <img class="logo" src="src/assets/img/ichiban.png" alt="Ichiban-logo" />
+        </a>
+        <p class="slogan">YOUR WAY TO FREEDOM</p>
+      </div>
+    </div>
+    <!-- Navegación principal - se vuelve sticky al hacer scroll -->
+    <nav class="contenedor_nav">
+      <!-- Botón hamburguesa - visible solo en móvil -->
+      <button class="hamburguesa" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul>
+        <li><a href="/">INICIO</a></li>
+        <li><a href="/category.html">CATEGORÍAS</a></li>
+        <li><a href="/contact.html">CONTACTO</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Título y descripción de la página -->
+    <h1>Nuestros modelos</h1>
+    <p>Explora nuestra gama de motos, cada una diseñada para ofrecer una experiencia única en la carretera. Desde la
+      potencia bruta de nuestras deportivas hasta la versatilidad de nuestras urbanas, tenemos la moto perfecta para
+      cada tipo de conductor.</p>
+
+    <!-- Banner 1: Filtros de categoría - controlados por JS -->
+    <section class="filtros">
+      <h2>Filtrar por categoría</h2>
+      <div class="grid_filtros">
+        <!-- data-category indica qué categoría filtra cada botón -->
+        <button class="filtro" data-category="todas">Todas</button>
+        <button class="filtro" data-category="enduro">Enduro</button>
+        <button class="filtro" data-category="deportiva">Deportiva</button>
+        <button class="filtro" data-category="urbana">Urbana</button>
+      </div>
+    </section>
+
+    <!-- Banner 2: Catálogo completo de motos -->
+    <section class="catalogo">
+      <div class="grid_catalogo">
+
+        <!-- Moto 1 - Categoría Enduro -->
+        <article data-category="enduro">
+          <a href="/moto1.html" title="Ver detalles de Moto Enduro">
+            <img class="motos" src="src/assets/img/moto1.jpg" alt="Dākuhōsu ダークホース - moto de estilo brutalista" />
+          </a>
+          <h3>Dākuhōsu ダークホース</h3>
+          <p>Ingeniería brutalista reducida a su máxima expresión. No sigue tendencias; las destruye. Diseñada para
+            quienes entienden que el futuro no se espera, se domina.</p>
+          <a class="etiqueta" href="/moto1.html" title="Ver detalles de Moto Dakuhōsu">Ver detalles</a>
+        </article>
+
+        <!-- Moto 2 - Categoría Deportiva -->
+        <article data-category="deportiva">
+          <a href="/moto2.html" title="Ver detalles de Moto Deportiva">
+            <img class="motos" src="src/assets/img/moto2.jpg" alt="Bull ブル - moto de estilo deportivo" />
+          </a>
+          <h3>Bull ブル</h3>
+          <p>Diseñada para los amantes de la velocidad y la adrenalina. Con un diseño aerodinámico y tecnología de
+            punta, esta moto deportiva ofrece un rendimiento excepcional en cada curva y recta.</p>
+          <a class="etiqueta" href="/moto2.html" title="Ver detalles de Moto Bull">Ver detalles</a>
+        </article>
+
+        <!-- Moto 3 - Categoría Urbana -->
+        <article data-category="urbana">
+          <a href="/moto3.html" title="Ver detalles de Moto Urbana">
+            <img class="motos" src="src/assets/img/moto3.jpg" alt="Ishi 意思 - moto de estilo urbano" />
+          </a>
+          <h3>Ishi 意思</h3>
+          <p>La elección perfecta para los que buscan estilo y comodidad en la ciudad. Con su diseño moderno y
+            características funcionales, esta moto urbana es ideal para desplazamientos diarios y viajes cortos.</p>
+          <a class="etiqueta" href="/moto3.html" title="Ver detalles de Moto Ishi">Ver detalles</a>
+        </article>
+
+        <!-- Moto 4 - Categoría Urbana -->
+        <article data-category="urbana">
+          <a href="/moto4.html" title="Ver detalles de Moto Urbana">
+            <img class="motos" src="src/assets/img/moto4.jpg" alt="Kōsen 光線 - moto de estilo urbano" />
+          </a>
+          <h3>Kōsen 光線</h3>
+          <p>Corriente eléctrica convertida en instinto puro. Sin ruido, sin humo, sin límites. La Kōsen redefine el
+            las calles para una era donde el poder no se escucha, se siente. Cada terreno es su territorio.</p>
+          <a class="etiqueta" href="/moto4.html" title="Ver detalles de Moto Kosen">Ver detalles</a>
+        </article>
+
+        <!-- Moto 5 - Categoría Enduro -->
+        <article data-category="enduro">
+          <a href="/moto5.html" title="Ver detalles de Moto Enduro">
+            <img class="motos" src="src/assets/img/moto5.jpg" alt="Hakujin 白刃 - moto de estilo enduro" />
+          </a>
+          <h3>Hakujin 白刃</h3>
+          <p>Geometría de precisión quirúrgica envuelta en blanco absoluto. Los detalles en neón no son decoración — son
+            una advertencia. La Hakujin no compite, ejecuta.</p>
+          <a class="etiqueta" href="/moto5.html" title="Ver detalles de Moto Hakujin">Ver detalles</a>
+        </article>
+
+        <!-- Moto 6 - Categoría Deportiva -->
+        <article data-category="deportiva">
+          <a href="/moto6.html" title="Ver detalles de Moto Deportiva">
+            <img class="motos" src="src/assets/img/moto6.jpg" alt="Kasai カサイ - moto de estilo deportivo" />
+          </a>
+          <h3>Kasai カサイ</h3>
+          <p>Oro, jade y velocidad absoluta. La Kasai no necesita presentación — su silueta lo dice todo. Aerodinámica
+            esculpida para devorar circuitos y dejar rastro de leyenda. El fuego tiene forma.</p>
+          <a class="etiqueta" href="/moto6.html" title="Ver detalles de Moto Kasai">Ver detalles</a>
+        </article>
+
+        <!-- Moto 7 - Categoría Deportiva -->
+        <article data-category="deportiva">
+          <a href="/moto7.html" title="Ver detalles de Moto Deportiva">
+            <img class="motos" src="src/assets/img/moto7.jpg" alt="Yūgen 幽玄 - moto de estilo urbano" />
+          </a>
+          <h3>Yūgen 幽玄</h3>
+          <p>Lo que no se puede explicar, solo sentir. La Yūgen es arte callejero en movimiento — oscura, imprevisible,
+            cargada de tensión. Para los que entienden que la ciudad no es un destino, es un escenario.</p>
+          <a class="etiqueta" href="/moto7.html" title="Ver detalles de Moto Yūgen">Ver detalles</a>
+        </article>
+
+        <!-- Moto 8 - Categoría Urbana -->
+        <article data-category="urbana">
+          <a href="/moto8.html" title="Ver detalles de Moto Urbana">
+            <img class="motos" src="src/assets/img/moto8.jpg" alt="Shizuku 雫 - moto de estilo urbano" />
+          </a>
+          <h3>Shizuku 雫</h3>
+          <p>Silencio hecho forma. Líneas que cortan el aire sin pedirle permiso. La Shizuku es la moto para quien no
+            necesita llamar la atención — porque ya la tiene. Elegancia sin esfuerzo, precisión sin ruido.</p>
+          <a class="etiqueta" href="/moto8.html" title="Ver detalles de Moto Shizuku">Ver detalles</a>
+        </article>
+
+        <!-- Moto 9 - Categoría Enduro -->
+        <article data-category="enduro">
+          <a href="/moto9.html" title="Ver detalles de Moto Enduro">
+            <img class="motos" src="src/assets/img/moto9.jpg" alt="Kage 影 - moto de estilo urbano" />
+          </a>
+          <h3>Kage 影</h3>
+          <p>La sombra que nadie ve venir. Geometría facetada para absorber cada impacto, detalles en jade para marcar
+            el territorio. La Kage domina donde el asfalto termina y el caos empieza.</p>
+          <a class="etiqueta" href="/moto9.html" title="Ver detalles de Moto Kage">Ver detalles</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Banner 3: Promoción con código de descuento -->
+    <section class="descuento">
+      <h2>Descuento exclusivo</h2>
+      <p>Usa el código ICHIBAN15 en tu reserva y obtén un 15% de descuento en tu primer modelo. Oferta válida hasta el
+        31 de diciembre de 2026.</p>
+      <!-- Enlace al formulario de reserva del index -->
+      <a class="etiqueta" href="/#reservation-section">Reservar ahora</a>
+    </section>
+  </main>
+
+  <!-- Pie de página compartido con todas las páginas -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <ul>
+          <li><span>📍</span><p>Calle Libertad 24, Tokio, Japón</p></li>
+          <li><span>📞</span><p>+81 90 1234 5678</p></li>
+          <li><span>✉️</span><a href="mailto:info@ichibanmotors.com">info@ichibanmotors.com</a></li>
+          <li><span>🕐</span><p>Lun–Vie: 9:00 – 18:00</p></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Síguenos</h3>
+        <ul class="redes">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">X / Twitter</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Ichiban Motors. Todos los derechos reservados.</p>
+      <div class="footer-legal">
+        <a href="/aviso-legal.html">Aviso legal</a>
+        <a href="/privacidad.html">Privacidad</a>
+        <a href="/cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script principal compartido con todas las páginas -->
+  <script type="module" src="src/js/main.js"></script>
+</body>
+
 </html>
